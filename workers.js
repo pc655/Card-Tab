@@ -628,7 +628,7 @@ const HTML_CONTENT = `
     .content {
         margin-top: 170px;
         padding: 10px;
-        max-width: 1600px;
+        max-width: 1100px;
         margin-left: auto;
         margin-right: auto;
         transition: opacity 0.3s ease;
@@ -1031,7 +1031,7 @@ const HTML_CONTENT = `
         padding: 15px;
         padding-left: 45px;
         margin: 0 auto;
-        max-width: 1600px;
+        max-width: 1100px;
     }
 
     .card {

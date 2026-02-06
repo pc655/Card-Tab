@@ -1182,221 +1182,7 @@ const HTML_CONTENT = `
         background-color: #5d7fb9;
     }
 
-    /* ========== 天气组件样式 ========== */
-    .weather-mini {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        background: rgba(67, 184, 131, 0.1);
-        border-radius: 16px;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        font-size: 13px;
-        margin-left: 12px;
-        vertical-align: middle;
-    }
-    .weather-mini:hover {
-        background: rgba(67, 184, 131, 0.2);
-        transform: translateY(-1px);
-    }
-    .weather-mini .weather-icon { font-size: 16px; }
-    .weather-mini .weather-temp { font-weight: 600; color: #333; }
-    .weather-mini .weather-city { color: #666; font-size: 12px; }
-    .weather-mini .weather-loading { color: #999; font-size: 12px; }
 
-    body.dark-theme .weather-mini {
-        background: rgba(93, 127, 185, 0.15);
-    }
-    body.dark-theme .weather-mini:hover {
-        background: rgba(93, 127, 185, 0.25);
-    }
-    body.dark-theme .weather-mini .weather-temp { color: #e3e3e3; }
-    body.dark-theme .weather-mini .weather-city { color: #aaa; }
-
-    /* 天气弹窗 */
-    .weather-modal {
-        display: none;
-        position: fixed;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.5);
-        z-index: 2000;
-        justify-content: center;
-        align-items: center;
-    }
-    .weather-modal.show { display: flex; }
-    .weather-modal-content {
-        background: #fff;
-        border-radius: 16px;
-        padding: 20px;
-        width: 90%;
-        max-width: 360px;
-        box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        animation: weatherModalIn 0.25s ease;
-    }
-    @keyframes weatherModalIn {
-        from { opacity: 0; transform: scale(0.9) translateY(-20px); }
-        to { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .weather-modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 16px;
-        padding-bottom: 12px;
-        border-bottom: 1px solid #eee;
-    }
-    .weather-modal-title { font-size: 16px; font-weight: 600; color: #333; }
-    .weather-modal-close {
-        background: none; border: none;
-        font-size: 20px; cursor: pointer;
-        color: #999; padding: 0; line-height: 1;
-    }
-    .weather-modal-close:hover { color: #333; }
-
-    /* 城市搜索 */
-    .weather-search {
-        position: relative;
-        margin-bottom: 16px;
-    }
-    .weather-search input {
-        width: 100%;
-        padding: 10px 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        font-size: 14px;
-        outline: none;
-        box-sizing: border-box;
-    }
-    .weather-search input:focus { border-color: #43b883; }
-    .weather-search-results {
-        position: absolute;
-        top: 100%;
-        left: 0; right: 0;
-        background: #fff;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        margin-top: 4px;
-        max-height: 200px;
-        overflow-y: auto;
-        display: none;
-        z-index: 10;
-    }
-    .weather-search-results.show { display: block; }
-    .weather-search-item {
-        padding: 10px 12px;
-        cursor: pointer;
-        border-bottom: 1px solid #eee;
-    }
-    .weather-search-item:last-child { border-bottom: none; }
-    .weather-search-item:hover { background: #f5f5f5; }
-    .weather-search-item-name { font-weight: 500; font-size: 14px; }
-    .weather-search-item-path { font-size: 12px; color: #999; margin-top: 2px; }
-
-    /* 定位模式切换 */
-    .weather-mode-switch {
-        display: flex;
-        gap: 8px;
-        margin-bottom: 16px;
-    }
-    .weather-mode-btn {
-        flex: 1;
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        background: #fff;
-        font-size: 13px;
-        cursor: pointer;
-        transition: all 0.2s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 4px;
-    }
-    .weather-mode-btn:hover { border-color: #43b883; }
-    .weather-mode-btn.active {
-        background: #43b883;
-        border-color: #43b883;
-        color: #fff;
-    }
-    body.dark-theme .weather-mode-btn {
-        background: #3a3a3a;
-        border-color: #555;
-        color: #e3e3e3;
-    }
-    body.dark-theme .weather-mode-btn:hover { border-color: #43b883; }
-    body.dark-theme .weather-mode-btn.active {
-        background: #43b883;
-        border-color: #43b883;
-        color: #fff;
-    }
-
-    /* 当前天气 */
-    .weather-current {
-        text-align: center;
-        padding: 16px 0;
-        border-bottom: 1px solid #eee;
-        margin-bottom: 16px;
-    }
-    .weather-current-icon { font-size: 48px; margin-bottom: 8px; }
-    .weather-current-temp { font-size: 36px; font-weight: 300; color: #333; }
-    .weather-current-desc { font-size: 16px; color: #666; margin: 4px 0; }
-    .weather-current-detail { font-size: 13px; color: #999; }
-
-    /* 天气预报 */
-    .weather-forecast {
-        display: flex;
-        justify-content: space-between;
-        gap: 8px;
-    }
-    .weather-forecast-item {
-        flex: 1;
-        text-align: center;
-        padding: 12px 8px;
-        background: #f8f9fa;
-        border-radius: 10px;
-    }
-    .weather-forecast-day { font-size: 13px; font-weight: 500; color: #333; margin-bottom: 6px; }
-    .weather-forecast-icon { font-size: 24px; margin: 6px 0; }
-    .weather-forecast-temp { font-size: 12px; color: #666; }
-    .weather-forecast-temp .high { color: #e74c3c; }
-    .weather-forecast-temp .low { color: #3498db; }
-
-    /* 天气未配置状态 */
-    .weather-not-configured {
-        text-align: center;
-        padding: 40px 20px;
-        color: #999;
-        font-size: 14px;
-    }
-    .weather-search input:disabled {
-        background: #f5f5f5;
-        cursor: not-allowed;
-        color: #999;
-    }
-    body.dark-theme .weather-not-configured { color: #666; }
-    body.dark-theme .weather-search input:disabled {
-        background: #2a2e38;
-        color: #666;
-    }
-
-    /* 天气弹窗暗色主题 */
-    body.dark-theme .weather-modal-content { background: #1e2128; }
-    body.dark-theme .weather-modal-header { border-bottom-color: #333; }
-    body.dark-theme .weather-modal-title { color: #e3e3e3; }
-    body.dark-theme .weather-modal-close { color: #888; }
-    body.dark-theme .weather-modal-close:hover { color: #e3e3e3; }
-    body.dark-theme .weather-search input { background: #2a2e38; border-color: #444; color: #e3e3e3; }
-    body.dark-theme .weather-search input:focus { border-color: #5d7fb9; }
-    body.dark-theme .weather-search-results { background: #2a2e38; border-color: #444; }
-    body.dark-theme .weather-search-item:hover { background: #333; }
-    body.dark-theme .weather-search-item { border-bottom-color: #444; }
-    body.dark-theme .weather-current { border-bottom-color: #333; }
-    body.dark-theme .weather-current-temp { color: #e3e3e3; }
-    body.dark-theme .weather-current-desc { color: #aaa; }
-    body.dark-theme .weather-forecast-item { background: #2a2e38; }
-    body.dark-theme .weather-forecast-day { color: #e3e3e3; }
-    body.dark-theme .weather-forecast-temp { color: #aaa; }
 
     /* 响应式设计 */
     @media (max-width: 480px) {
@@ -2009,7 +1795,7 @@ const HTML_CONTENT = `
 
 <body>
     <div class="fixed-elements">
-        <h3><span class="weather-mini" id="weather-mini" onclick="openWeatherModal()"><span class="weather-loading">加载中...</span></span></h3>
+
         <div class="center-content">
             <!-- 一言模块 -->
             <p id="hitokoto">
@@ -4243,342 +4029,8 @@ const HTML_CONTENT = `
         mask.style.display = 'none';
     }
 
-    // ========== 天气组件 ==========
-    const WEATHER_API = '/api/weather';  // 后端代理
-    const WEATHER_CACHE_KEY = 'card_tab_weather_cache';
-    const WEATHER_CACHE_DURATION = 30 * 60 * 1000; // 30分钟
-    const WEATHER_MODE_KEY = 'card_tab_weather_mode'; // 定位模式：ip 或 fixed
-    const WEATHER_FIXED_CITY_KEY = 'card_tab_weather_fixed_city'; // 默认城市信息
-    let weatherNotConfigured = false; // 天气服务是否未配置
-
-    // 天气图标映射
-    const WEATHER_ICONS = {
-        '100': '☀️', '150': '🌙', '101': '⛅', '102': '⛅', '103': '🌥️', '104': '☁️',
-        '151': '🌙', '152': '🌙', '153': '🌙', '154': '☁️',
-        '300': '🌦️', '301': '🌧️', '302': '⛈️', '303': '⛈️', '304': '⛈️',
-        '305': '🌧️', '306': '🌧️', '307': '🌧️', '308': '🌧️', '309': '🌧️',
-        '310': '🌧️', '311': '🌧️', '312': '🌧️', '313': '🌧️',
-        '400': '🌨️', '401': '🌨️', '402': '🌨️', '403': '🌨️', '404': '🌨️',
-        '500': '🌫️', '501': '🌫️', '502': '🌫️', '503': '🌫️', '504': '🌫️',
-        '999': '❓'
-    };
-    const WEEKDAYS = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
-
-    let currentWeatherLocation = null;
-    let weatherSearchTimer = null;
-
-    // 获取定位模式
-    function getWeatherMode() {
-        return localStorage.getItem(WEATHER_MODE_KEY) || 'ip';
-    }
-
-    // 设置定位模式
-    function setWeatherMode(mode) {
-        localStorage.setItem(WEATHER_MODE_KEY, mode);
-        updateWeatherModeUI();
-    }
-
-    // 获取默认城市
-    function getFixedCity() {
-        try {
-            const data = localStorage.getItem(WEATHER_FIXED_CITY_KEY);
-            return data ? JSON.parse(data) : null;
-        } catch (e) { return null; }
-    }
-
-    // 设置默认城市
-    function setFixedCity(location) {
-        localStorage.setItem(WEATHER_FIXED_CITY_KEY, JSON.stringify(location));
-    }
-
-    // 更新模式切换UI
-    function updateWeatherModeUI() {
-        const mode = getWeatherMode();
-        const ipBtn = document.getElementById('weather-mode-ip');
-        const fixedBtn = document.getElementById('weather-mode-fixed');
-        if (ipBtn && fixedBtn) {
-            ipBtn.classList.toggle('active', mode === 'ip');
-            fixedBtn.classList.toggle('active', mode === 'fixed');
-        }
-    }
-
-    // 切换到IP定位模式
-    async function switchToIPMode() {
-        setWeatherMode('ip');
-        localStorage.removeItem(WEATHER_CACHE_KEY);
-        document.getElementById('weather-mini').innerHTML = '<span class="weather-loading">定位中...</span>';
-        await loadWeatherByIP();
-    }
-
-    // 初始化天气
-    async function initWeather() {
-        updateWeatherModeUI();
-        const mode = getWeatherMode();
-
-        // 如果是默认城市模式，优先使用默认城市
-        if (mode === 'fixed') {
-            const fixedCity = getFixedCity();
-            if (fixedCity) {
-                // 检查缓存是否有效
-                const cache = getWeatherCache();
-                if (cache && cache.location && cache.location.id === fixedCity.id && cache.now && cache.forecast) {
-                    currentWeatherLocation = cache.location;
-                    renderWeatherMini(cache.now, cache.location);
-                    renderWeatherModal(cache.now, cache.forecast, cache.location);
-                    return;
-                }
-                // 缓存无效，使用默认城市重新加载天气
-                currentWeatherLocation = fixedCity;
-                await loadWeatherData();
-                return;
-            }
-        }
-
-        // IP定位模式或没有设置默认城市
-        const cache = getWeatherCache();
-        if (cache && cache.location && cache.now && cache.forecast) {
-            currentWeatherLocation = cache.location;
-            renderWeatherMini(cache.now, cache.location);
-            renderWeatherModal(cache.now, cache.forecast, cache.location);
-            return;
-        }
-        await loadWeatherByIP();
-    }
-
-    // 获取缓存
-    function getWeatherCache() {
-        try {
-            const data = localStorage.getItem(WEATHER_CACHE_KEY);
-            if (!data) return null;
-            const cache = JSON.parse(data);
-            if (Date.now() - cache.timestamp > WEATHER_CACHE_DURATION) return null;
-            return cache;
-        } catch (e) { return null; }
-    }
-
-    // 设置缓存
-    function setWeatherCache(location, now, forecast) {
-        localStorage.setItem(WEATHER_CACHE_KEY, JSON.stringify({
-            location: location, now: now, forecast: forecast, timestamp: Date.now()
-        }));
-    }
-
-    // IP定位加载天气
-    async function loadWeatherByIP() {
-        try {
-            console.log('开始IP定位...');
-            const ipRes = await fetch('https://ipapi.co/json/');
-            console.log('IP定位响应状态:', ipRes.status);
-            if (!ipRes.ok) throw new Error('IP定位失败');
-            const ipData = await ipRes.json();
-            console.log('IP定位数据:', ipData);
-            const cityName = ipData.city || ipData.region;
-            console.log('城市名称:', cityName);
-
-            const geoRes = await fetch(WEATHER_API + '/geo?location=' + encodeURIComponent(cityName) + '&number=1');
-            console.log('城市查询响应状态:', geoRes.status);
-
-            // 检查是否未配置天气服务
-            if (geoRes.status === 503) {
-                weatherNotConfigured = true;
-                renderWeatherNotConfigured(cityName);
-                return;
-            }
-
-            const geoData = await geoRes.json();
-            console.log('城市查询数据:', geoData);
-            if (geoData.code !== '200' || !geoData.location || !geoData.location.length) throw new Error('城市查询失败');
-
-            currentWeatherLocation = geoData.location[0];
-            console.log('当前天气位置:', currentWeatherLocation);
-            await loadWeatherData();
-        } catch (e) {
-            console.error('天气加载失败详细错误:', e);
-            document.getElementById('weather-mini').innerHTML = '<span class="weather-loading" title="' + e.message + '">加载失败</span>';
-        }
-    }
-
-    // 加载天气数据
-    async function loadWeatherData() {
-        if (!currentWeatherLocation) return;
-        try {
-            const [nowRes, forecastRes] = await Promise.all([
-                fetch(WEATHER_API + '/now?location=' + currentWeatherLocation.id),
-                fetch(WEATHER_API + '/3d?location=' + currentWeatherLocation.id)
-            ]);
-
-            // 检查是否未配置天气服务
-            if (nowRes.status === 503 || forecastRes.status === 503) {
-                weatherNotConfigured = true;
-                renderWeatherNotConfigured(currentWeatherLocation.name);
-                return;
-            }
-
-            const nowData = await nowRes.json();
-            const forecastData = await forecastRes.json();
-
-            if (nowData.code !== '200' || forecastData.code !== '200') throw new Error('天气API错误');
-
-            setWeatherCache(currentWeatherLocation, nowData.now, forecastData.daily);
-            renderWeatherMini(nowData.now, currentWeatherLocation);
-            renderWeatherModal(nowData.now, forecastData.daily, currentWeatherLocation);
-        } catch (e) {
-            console.warn('天气数据加载失败:', e);
-        }
-    }
-
-    // 渲染未配置天气服务的状态
-    function renderWeatherNotConfigured(cityName) {
-        // 迷你天气：城市 + --°
-        document.getElementById('weather-mini').innerHTML =
-            '<span class="weather-city">' + (cityName || '--') + '</span>' +
-            '<span class="weather-temp">--°</span>';
-        // 弹窗内容
-        document.getElementById('weather-current').innerHTML =
-            '<div class="weather-not-configured">未配置天气 Api Key</div>';
-        // 禁用搜索框
-        const searchInput = document.getElementById('weather-city-input');
-        if (searchInput) {
-            searchInput.disabled = true;
-            searchInput.placeholder = '天气服务未启用';
-        }
-    }
-
-    // 渲染迷你天气
-    function renderWeatherMini(now, location) {
-        const icon = WEATHER_ICONS[now.icon] || '❓';
-        document.getElementById('weather-mini').innerHTML =
-            '<span class="weather-city">' + location.name + '</span>' +
-            '<span class="weather-icon">' + icon + '</span>' +
-            '<span class="weather-temp">' + now.temp + '°</span>';
-    }
-
-    // 渲染天气弹窗
-    function renderWeatherModal(now, forecast, location) {
-        const icon = WEATHER_ICONS[now.icon] || '❓';
-        document.getElementById('weather-current').innerHTML =
-            '<div class="weather-current-icon">' + icon + '</div>' +
-            '<div class="weather-current-temp">' + now.temp + '°C</div>' +
-            '<div class="weather-current-desc">' + location.name + ' · ' + now.text + '</div>' +
-            '<div class="weather-current-detail">体感' + now.feelsLike + '° 湿度' + now.humidity + '% ' + now.windDir + now.windScale + '级</div>';
-
-        let forecastHtml = '';
-        forecast.slice(0, 3).forEach(function(day, i) {
-            var date = new Date(day.fxDate);
-            var dayName = i === 0 ? '今天' : WEEKDAYS[date.getDay()];
-            var dayIcon = WEATHER_ICONS[day.iconDay] || '❓';
-            forecastHtml += '<div class="weather-forecast-item">' +
-                '<div class="weather-forecast-day">' + dayName + '</div>' +
-                '<div class="weather-forecast-icon">' + dayIcon + '</div>' +
-                '<div class="weather-forecast-temp"><span class="low">' + day.tempMin + '°</span>~<span class="high">' + day.tempMax + '°</span></div>' +
-            '</div>';
-        });
-        document.getElementById('weather-forecast').innerHTML = forecastHtml;
-    }
-
-    // 弹窗控制
-    function openWeatherModal() {
-        document.getElementById('weather-modal').classList.add('show');
-    }
-    function closeWeatherModal() {
-        document.getElementById('weather-modal').classList.remove('show');
-        document.getElementById('weather-search-results').classList.remove('show');
-        document.getElementById('weather-city-input').value = '';
-    }
-    function closeWeatherModalOutside(e) {
-        if (e.target.id === 'weather-modal') closeWeatherModal();
-    }
-
-    // 城市搜索
-    async function searchWeatherCity(query) {
-        if (weatherNotConfigured) return; // 未配置时禁用搜索
-        if (weatherSearchTimer) clearTimeout(weatherSearchTimer);
-        const resultsEl = document.getElementById('weather-search-results');
-        if (query.length < 1) { resultsEl.classList.remove('show'); return; }
-
-        weatherSearchTimer = setTimeout(async function() {
-            try {
-                const res = await fetch(WEATHER_API + '/geo?location=' + encodeURIComponent(query) + '&number=8');
-                const data = await res.json();
-                if (data.code !== '200' || !data.location || !data.location.length) {
-                    resultsEl.innerHTML = '<div class="weather-search-item"><div class="weather-search-item-name">未找到城市</div></div>';
-                } else {
-                    resultsEl.innerHTML = data.location.map(function(loc) {
-                        return '<div class="weather-search-item" data-loc-id="' + loc.id + '" data-loc-name="' + loc.name + '" data-loc-adm1="' + loc.adm1 + '" data-loc-adm2="' + loc.adm2 + '">' +
-                        '<div class="weather-search-item-name">' + loc.name + '</div>' +
-                        '<div class="weather-search-item-path">' + loc.adm1 + ' · ' + loc.adm2 + '</div></div>';
-                    }).join('');
-                    // 为搜索结果添加点击事件
-                    resultsEl.querySelectorAll('.weather-search-item').forEach(function(item) {
-                        item.onclick = function() {
-                            selectWeatherCity(
-                                item.getAttribute('data-loc-id'),
-                                item.getAttribute('data-loc-name'),
-                                item.getAttribute('data-loc-adm1'),
-                                item.getAttribute('data-loc-adm2')
-                            );
-                        };
-                    });
-                }
-                resultsEl.classList.add('show');
-            } catch (e) { resultsEl.innerHTML = '<div class="weather-search-item"><div class="weather-search-item-name">搜索失败</div></div>'; resultsEl.classList.add('show'); }
-        }, 300);
-    }
-
-    // 选择城市
-    async function selectWeatherCity(id, name, adm1, adm2) {
-        currentWeatherLocation = { id: id, name: name, adm1: adm1, adm2: adm2 };
-        document.getElementById('weather-search-results').classList.remove('show');
-        document.getElementById('weather-city-input').value = '';
-        document.getElementById('weather-mini').innerHTML = '<span class="weather-loading">加载中...</span>';
-        // 保存为默认城市并切换模式
-        setFixedCity(currentWeatherLocation);
-        setWeatherMode('fixed');
-        localStorage.removeItem(WEATHER_CACHE_KEY);
-        await loadWeatherData();
-    }
-
-    // 页面加载时初始化天气
-    document.addEventListener('DOMContentLoaded', function() {
-        setTimeout(function() {
-            console.log('开始初始化天气组件...');
-            initWeather().catch(function(err) {
-                console.error('天气初始化失败:', err);
-                document.getElementById('weather-mini').innerHTML = '<span class="weather-loading">加载失败</span>';
-            });
-        }, 500); // 延迟加载，优先加载主内容
-    });
-
-    </script>
-
-    <!-- 天气弹窗 -->
-    <div class="weather-modal" id="weather-modal" onclick="closeWeatherModalOutside(event)">
-        <div class="weather-modal-content" onclick="event.stopPropagation()">
-            <div class="weather-modal-header">
-                <span class="weather-modal-title">天气详情</span>
-                <button class="weather-modal-close" onclick="closeWeatherModal()">&times;</button>
-            </div>
-            <div class="weather-search">
-                <input type="text" id="weather-city-input" placeholder="🔍 搜索城市..." oninput="searchWeatherCity(this.value)">
-                <div class="weather-search-results" id="weather-search-results"></div>
-            </div>
-            <div class="weather-mode-switch">
-                <button class="weather-mode-btn" id="weather-mode-ip" onclick="switchToIPMode()">🌐 IP自动定位</button>
-                <button class="weather-mode-btn" id="weather-mode-fixed">📍 默认城市</button>
-            </div>
-            <div class="weather-current" id="weather-current">
-                <div class="weather-current-icon">--</div>
-                <div class="weather-current-temp">--°C</div>
-                <div class="weather-current-desc">--</div>
-                <div class="weather-current-detail">体感--° 湿度--% --</div>
-            </div>
-            <div class="weather-forecast" id="weather-forecast">
-                <div class="weather-forecast-item"><div class="weather-forecast-day">--</div><div class="weather-forecast-icon">--</div><div class="weather-forecast-temp">--</div></div>
-                <div class="weather-forecast-item"><div class="weather-forecast-day">--</div><div class="weather-forecast-icon">--</div><div class="weather-forecast-temp">--</div></div>
-                <div class="weather-forecast-item"><div class="weather-forecast-day">--</div><div class="weather-forecast-icon">--</div><div class="weather-forecast-temp">--</div></div>
-            </div>
-        </div>
-    </div>
+   </script>
+   
 </body>
 
 </html>
@@ -4697,228 +4149,118 @@ async function validateAdminToken(authToken, env) {
 
 export default {
     async fetch(request, env) {
-      const url = new URL(request.url);
+        const url = new URL(request.url);
 
-      if (url.pathname === '/') {
-        return new Response(HTML_CONTENT, {
-          headers: { 'Content-Type': 'text/html' }
-        });
-      }
-
-      // ========== 天气代理 API ==========
-      const normalizeBaseUrl = (raw) => {
-        const value = (raw || '').trim();
-        if (!value) return null;
-        const withScheme = /^https?:\/\//i.test(value) ? value : `https://${value}`;
-        return withScheme.replace(/\/+$/, '');
-      };
-
-      // 公告说明：公共 API 域名将逐步停服，建议改用你的 API Host（形如：xxx.yyy.qweatherapi.com）
-      // - devapi.qweather.com 已于 2026-01-01 停止服务
-      // - GeoAPI 使用 API Host 时需从 /v2/... 变更为 /geo/v2/...
-      const qweatherHost = normalizeBaseUrl(env.WEATHER_API_HOST);
-      const qweatherApiBase = qweatherHost || 'https://api.qweather.com';
-      const qweatherGeoBase = qweatherHost ? `${qweatherApiBase}/geo` : 'https://geoapi.qweather.com';
-
-      const proxyQWeatherJson = async (targetUrl) => {
-        const redactedUrl = targetUrl.replace(/([?&]key=)[^&]*/i, '$1***');
-        let res;
-        try {
-          res = await fetch(targetUrl);
-        } catch (err) {
-          return new Response(JSON.stringify({
-            code: '502',
-            error: 'qweather_fetch_failed',
-            upstreamUrl: redactedUrl,
-            message: String(err)
-          }), { status: 502, headers: { 'Content-Type': 'application/json' } });
+        if (url.pathname === '/') {
+            return new Response(HTML_CONTENT, {
+                headers: { 'Content-Type': 'text/html' }
+            });
         }
 
-        const contentType = res.headers.get('content-type') || '';
-        const text = await res.text();
-
-        if (!res.ok) {
-          return new Response(JSON.stringify({
-            code: String(res.status),
-            error: 'qweather_upstream_error',
-            upstreamStatus: res.status,
-            upstreamContentType: contentType,
-            upstreamUrl: redactedUrl,
-            upstreamBody: (text || '').slice(0, 800)
-          }), { status: 502, headers: { 'Content-Type': 'application/json' } });
-        }
-
-        try {
-          if (!text) throw new Error('empty response body');
-          const data = JSON.parse(text);
-          return new Response(JSON.stringify(data), { headers: { 'Content-Type': 'application/json' } });
-        } catch (err) {
-          return new Response(JSON.stringify({
-            code: '502',
-            error: 'qweather_invalid_json',
-            upstreamContentType: contentType,
-            upstreamUrl: redactedUrl,
-            upstreamBody: (text || '').slice(0, 800),
-            message: String(err)
-          }), { status: 502, headers: { 'Content-Type': 'application/json' } });
-        }
-      };
-
-      if (url.pathname === '/api/weather/now') {
-        if (!env.WEATHER_API_KEY) {
-          return new Response(JSON.stringify({ code: '503', error: 'weather_not_configured' }), {
-            status: 503, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        const location = url.searchParams.get('location');
-        if (!location) {
-          return new Response(JSON.stringify({ code: '400', error: 'missing location' }), {
-            status: 400, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        return await proxyQWeatherJson(
-          `${qweatherApiBase}/v7/weather/now?location=${encodeURIComponent(location)}&key=${env.WEATHER_API_KEY}`
-        );
-      }
-
-      if (url.pathname === '/api/weather/3d') {
-        if (!env.WEATHER_API_KEY) {
-          return new Response(JSON.stringify({ code: '503', error: 'weather_not_configured' }), {
-            status: 503, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        const location = url.searchParams.get('location');
-        if (!location) {
-          return new Response(JSON.stringify({ code: '400', error: 'missing location' }), {
-            status: 400, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        return await proxyQWeatherJson(
-          `${qweatherApiBase}/v7/weather/3d?location=${encodeURIComponent(location)}&key=${env.WEATHER_API_KEY}`
-        );
-      }
-
-      if (url.pathname === '/api/weather/geo') {
-        if (!env.WEATHER_API_KEY) {
-          return new Response(JSON.stringify({ code: '503', error: 'weather_not_configured' }), {
-            status: 503, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        const location = url.searchParams.get('location');
-        const number = url.searchParams.get('number') || '8';
-        if (!location) {
-          return new Response(JSON.stringify({ code: '400', error: 'missing location' }), {
-            status: 400, headers: { 'Content-Type': 'application/json' }
-          });
-        }
-        return await proxyQWeatherJson(
-          `${qweatherGeoBase}/v2/city/lookup?location=${encodeURIComponent(location)}&key=${env.WEATHER_API_KEY}&number=${number}`
-        );
-      }
-
-      if (url.pathname === '/api/getLinks') {
-        const userId = url.searchParams.get('userId');
-        const authToken = request.headers.get('Authorization');
-        const data = await env.CARD_ORDER.get(userId);
-
-        if (data) {
-            const parsedData = JSON.parse(data);
-
-            // 验证 token
-            if (authToken) {
-                const validation = await validateServerToken(authToken, env);
-                if (!validation.isValid) {
-                    return new Response(JSON.stringify(validation.response), {
-                        status: validation.status,
-                        headers: { 'Content-Type': 'application/json' }
-                    });
+        // 验证服务端Token
+        async function validateServerToken(authToken, env) {
+            try {
+                if (!authToken || !env.ADMIN_PASSWORD) {
+                    return {
+                        isValid: false,
+                        status: 401,
+                        response: { code: '401', error: 'Unauthorized' }
+                    };
                 }
-
-                // Token 有效，返回完整数据
-                return new Response(JSON.stringify(parsedData), {
-                    status: 200,
-                    headers: { 'Content-Type': 'application/json' }
-                });
-            }
-
-            // 未提供 token，只返回公开数据
-            const filteredLinks = parsedData.links.filter(link => !link.isPrivate);
-            const filteredCategories = {};
-            Object.keys(parsedData.categories).forEach(category => {
-                filteredCategories[category] = parsedData.categories[category].filter(link => !link.isPrivate);
-            });
-
-            return new Response(JSON.stringify({
-                links: filteredLinks,
-                categories: filteredCategories
-            }), {
-                status: 200,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-
-        return new Response(JSON.stringify({
-            links: [],
-            categories: {}
-        }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-      if (url.pathname === '/api/saveOrder' && request.method === 'POST') {
-        const authToken = request.headers.get('Authorization');
-        const validation = await validateServerToken(authToken, env);
-
-        if (!validation.isValid) {
-            return new Response(JSON.stringify(validation.response), {
-                status: validation.status,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-
-        const { userId, links, categories } = await request.json();
-        await env.CARD_ORDER.put(userId, JSON.stringify({ links, categories }));
-        return new Response(JSON.stringify({
-            success: true,
-            message: '保存成功'
-        }), {
-            status: 200,
-            headers: { 'Content-Type': 'application/json' }
-        });
-      }
-
-      if (url.pathname === '/api/verifyPassword' && request.method === 'POST') {
-        try {
-            const body = await request.json();
-            const { password, expiryMinutes: clientExpiry } = body;
-            const isValid = password === env.ADMIN_PASSWORD;
-
-            if (isValid) {
-                // 允许的有效期白名单（分钟）：15分钟、1小时、1天、7天、30天、永久
-                const ALLOWED_EXPIRY_VALUES = [15, 60, 1440, 10080, 43200, -1];
-                const defaultExpiry = parseInt(env.TOKEN_EXPIRY_MINUTES) || 30;
-
-                // 验证客户端传入的有效期是否在白名单中
-                let expiryMinutes = defaultExpiry;
-                if (typeof clientExpiry === 'number' && Number.isInteger(clientExpiry) && ALLOWED_EXPIRY_VALUES.includes(clientExpiry)) {
-                    expiryMinutes = clientExpiry;
+                const parts = authToken.split('.');
+                if (parts.length !== 3) {
+                    return {
+                        isValid: false,
+                        status: 401,
+                        response: { code: '401', error: 'Invalid token format' }
+                    };
                 }
-
-                // 生成包含时间戳和有效期的加密 token
-                const timestamp = Date.now();
+                const [timestampStr, expiryMinutesStr, hash] = parts;
+                const timestamp = parseInt(timestampStr);
+                const expiryMinutes = parseInt(expiryMinutesStr);
+                if (isNaN(timestamp) || isNaN(expiryMinutes)) {
+                    return {
+                        isValid: false,
+                        status: 401,
+                        response: { code: '401', error: 'Invalid token data' }
+                    };
+                }
+                // 永久token（-1）不校验过期
+                if (expiryMinutes !== -1) {
+                    const now = Date.now();
+                    const expiryTime = timestamp + (expiryMinutes * 60 * 1000);
+                    if (now > expiryTime) {
+                        return {
+                            isValid: false,
+                            status: 401,
+                            response: { code: '401', error: 'Token expired' }
+                        };
+                    }
+                }
+                // 重新计算哈希验证
                 const tokenData = timestamp + "_" + expiryMinutes + "_" + env.ADMIN_PASSWORD;
                 const encoder = new TextEncoder();
                 const data = encoder.encode(tokenData);
                 const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+                const calculatedHash = btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
+                if (calculatedHash !== hash) {
+                    return {
+                        isValid: false,
+                        status: 401,
+                        response: { code: '401', error: 'Invalid token' }
+                    };
+                }
+                return { isValid: true };
+            } catch (error) {
+                return {
+                    isValid: false,
+                    status: 500,
+                    response: { code: '500', error: 'Token validation failed' }
+                };
+            }
+        }
 
-                // 使用指定格式：timestamp.expiryMinutes.hash
-                const token = timestamp + "." + expiryMinutes + "." + btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
+        // 验证管理员Token（复用serverToken验证逻辑，可按需扩展）
+        async function validateAdminToken(authToken, env) {
+            return await validateServerToken(authToken, env);
+        }
+
+        // 获取链接数据
+        if (url.pathname === '/api/getLinks') {
+            const userId = url.searchParams.get('userId');
+            const authToken = request.headers.get('Authorization');
+            const data = await env.CARD_ORDER.get(userId);
+
+            if (data) {
+                const parsedData = JSON.parse(data);
+
+                // 验证 token
+                if (authToken) {
+                    const validation = await validateServerToken(authToken, env);
+                    if (!validation.isValid) {
+                        return new Response(JSON.stringify(validation.response), {
+                            status: validation.status,
+                            headers: { 'Content-Type': 'application/json' }
+                        });
+                    }
+
+                    // Token 有效，返回完整数据
+                    return new Response(JSON.stringify(parsedData), {
+                        status: 200,
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                }
+
+                // 未提供 token，只返回公开数据
+                const filteredLinks = parsedData.links.filter(link => !link.isPrivate);
+                const filteredCategories = {};
+                Object.keys(parsedData.categories).forEach(category => {
+                    filteredCategories[category] = parsedData.categories[category].filter(link => !link.isPrivate);
+                });
 
                 return new Response(JSON.stringify({
-                    valid: true,
-                    token: token,
-                    expiryMinutes: expiryMinutes
+                    links: filteredLinks,
+                    categories: filteredCategories
                 }), {
                     status: 200,
                     headers: { 'Content-Type': 'application/json' }
@@ -4926,57 +4268,129 @@ export default {
             }
 
             return new Response(JSON.stringify({
-                valid: false,
-                error: 'Invalid password'
+                links: [],
+                categories: {}
             }), {
-                status: 403,
+                status: 200,
                 headers: { 'Content-Type': 'application/json' }
             });
-        } catch (error) {
+        }
+
+        // 保存链接数据
+        if (url.pathname === '/api/saveOrder' && request.method === 'POST') {
+            const authToken = request.headers.get('Authorization');
+            const validation = await validateServerToken(authToken, env);
+
+            if (!validation.isValid) {
+                return new Response(JSON.stringify(validation.response), {
+                    status: validation.status,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+
+            const { userId, links, categories } = await request.json();
+            await env.CARD_ORDER.put(userId, JSON.stringify({ links, categories }));
             return new Response(JSON.stringify({
-                valid: false,
-                error: error.message
+                success: true,
+                message: '保存成功'
             }), {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-      }
-
-      if (url.pathname === '/api/backupData' && request.method === 'POST') {
-        // 🔧 安全修复：添加管理员权限验证
-        const authToken = request.headers.get('Authorization');
-        const validation = await validateAdminToken(authToken, env);
-
-        if (!validation.isValid) {
-            return new Response(JSON.stringify(validation.response), {
-                status: validation.status,
+                status: 200,
                 headers: { 'Content-Type': 'application/json' }
             });
         }
 
-        try {
-            const { sourceUserId } = await request.json();
-            const result = await this.backupData(env, sourceUserId);
-            return new Response(JSON.stringify(result), {
-              status: result.success ? 200 : 404,
-              headers: { 'Content-Type': 'application/json' }
-            });
-        } catch (error) {
-            // 避免泄露详细错误信息
-            return new Response(JSON.stringify({
-                success: false,
-                message: '备份操作失败'
-            }), {
-                status: 500,
-                headers: { 'Content-Type': 'application/json' }
-            });
-        }
-      }
+        // 验证密码生成Token
+        if (url.pathname === '/api/verifyPassword' && request.method === 'POST') {
+            try {
+                const body = await request.json();
+                const { password, expiryMinutes: clientExpiry } = body;
+                const isValid = password === env.ADMIN_PASSWORD;
 
-      return new Response('Not Found', { status: 404 });
+                if (isValid) {
+                    // 允许的有效期白名单（分钟）：15分钟、1小时、1天、7天、30天、永久
+                    const ALLOWED_EXPIRY_VALUES = [15, 60, 1440, 10080, 43200, -1];
+                    const defaultExpiry = parseInt(env.TOKEN_EXPIRY_MINUTES) || 30;
+
+                    // 验证客户端传入的有效期是否在白名单中
+                    let expiryMinutes = defaultExpiry;
+                    if (typeof clientExpiry === 'number' && Number.isInteger(clientExpiry) && ALLOWED_EXPIRY_VALUES.includes(clientExpiry)) {
+                        expiryMinutes = clientExpiry;
+                    }
+
+                    // 生成包含时间戳和有效期的加密 token
+                    const timestamp = Date.now();
+                    const tokenData = timestamp + "_" + expiryMinutes + "_" + env.ADMIN_PASSWORD;
+                    const encoder = new TextEncoder();
+                    const data = encoder.encode(tokenData);
+                    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+                    // 使用指定格式：timestamp.expiryMinutes.hash
+                    const token = timestamp + "." + expiryMinutes + "." + btoa(String.fromCharCode(...new Uint8Array(hashBuffer)));
+
+                    return new Response(JSON.stringify({
+                        valid: true,
+                        token: token,
+                        expiryMinutes: expiryMinutes
+                    }), {
+                        status: 200,
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                }
+
+                return new Response(JSON.stringify({
+                    valid: false,
+                    error: 'Invalid password'
+                }), {
+                    status: 403,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (error) {
+                return new Response(JSON.stringify({
+                    valid: false,
+                    error: error.message
+                }), {
+                    status: 500,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+        }
+
+        // 备份数据
+        if (url.pathname === '/api/backupData' && request.method === 'POST') {
+            // 安全验证：管理员权限验证
+            const authToken = request.headers.get('Authorization');
+            const validation = await validateAdminToken(authToken, env);
+
+            if (!validation.isValid) {
+                return new Response(JSON.stringify(validation.response), {
+                    status: validation.status,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+
+            try {
+                const { sourceUserId } = await request.json();
+                const result = await this.backupData(env, sourceUserId);
+                return new Response(JSON.stringify(result), {
+                    status: result.success ? 200 : 404,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            } catch (error) {
+                // 避免泄露详细错误信息
+                return new Response(JSON.stringify({
+                    success: false,
+                    message: '备份操作失败'
+                }), {
+                    status: 500,
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            }
+        }
+
+        return new Response('Not Found', { status: 404 });
     },
 
+    // 数据备份方法
     async backupData(env, sourceUserId) {
         const MAX_BACKUPS = 10;
         const sourceData = await env.CARD_ORDER.get(sourceUserId);
@@ -5035,4 +4449,4 @@ export default {
         }
         return { success: false, error: 'Source data not found' };
     }
-  };
+};
